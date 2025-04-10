@@ -8,6 +8,7 @@ init(autoreset=True)
 #cek koneks
 RPC ='https://eth-sepolia.g.alchemy.com/v2/eojqIrGfDMDyfz-38hs9vpEVSbmL-FYf'
 w3 = Web3(Web3.HTTPProvider(RPC))
+address =""
 
 def clear_terminal():
     if os.name == 'nt':
@@ -21,8 +22,12 @@ def connect():
         exit()
 
 def get_block_latest():
-    result = w3.eth.get_block()
+    result = w3.eth.get_block(address)
     return result
+
+def get_balance():
+    balance_wei = w3.eth.get_balance(address)
+    return balance_wei
 
 if __name__ == '__main__':
     clear_terminal()
